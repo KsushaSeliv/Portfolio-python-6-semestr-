@@ -18,8 +18,8 @@ https://github.com/KsushaSeliv/Portfolio-python-6-semestr-/tree/master/Темы%
 ##### №6 Тема №2
 https://github.com/KsushaSeliv/Portfolio-python-6-semestr-/tree/master/Темы%20(№1-№4)/Тема%20№2
 
-##### №6 Тема №3
+##### №7 Тема №3
 https://github.com/KsushaSeliv/Portfolio-python-6-semestr-/tree/master/Темы%20(№1-№4)/Тема%20№3
 
-##### №6 Тема №4
+##### №8 Тема №4
 https://github.com/KsushaSeliv/Portfolio-python-6-semestr-/tree/master/Темы%20(№1-№4)/Тема%20№4
