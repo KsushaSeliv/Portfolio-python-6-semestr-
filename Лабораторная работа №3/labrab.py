@@ -9,12 +9,11 @@ df = pd.read_csv('ex1data1.csv', header = None) #Загружаем данные
 x, y = df[0], df[1]
 x1=[1,25]
 y1=[0,25]
-#t = arange(0.0, 25.0, 0.01)
 fig = plt.figure()                 
 pl1 = plt.subplot(111) 
 plt.plot(x, y, 'b*') 
 pl1.plot(x1, y1, 'g-') 
-#pl1.plot(t,(2*t-10),'g-')
+
 
 
 #Алгоритм градиентного спуска для линейной регрессии с одной переменной.
@@ -47,22 +46,23 @@ plt.plot(x2, y2, 'y-')
 
 #polyfit
 
-numpy_x = np.array(x)
-numpy_y = np.array(y)
-numpy_t1, numpy_t0 = np.polyfit(numpy_x, numpy_y, 1)
+numx = np.array(x)
+numy = np.array(y)
+numt1, numpt0 = np.polyfit(numx, numy, 1)
 
-num_y1 = [0, 0]
-num_y1[0] = numpy_t0 + x1[0] * numpy_t1
-num_y1[1] = numpy_t0 + x1[1] * numpy_t1
-plt.plot(x1, num_y1, 'b-')
+numy1 = [0, 0]
+numy1[0] = numt0 + x1[0] * numt1
+numy1[1] = numt0 + x1[1] * numt1
 
+plt.plot(x1, numy1, 'b-')
 plt.plot(x, y, 'b*')
 plt.plot(x2, y2, 'y-')
-plt.plot(x1, num_y1, 'r-')
+plt.plot(x1, numy1, 'r-')
 
 
 
 #Линейная регрессия со множеством переменных
+
 def sq_error(sqx, sqy, f_x=None):  #Вычисление среднеквадратичной ошибки
     squared_error = []
     for i in range(len(sqx)):
@@ -84,16 +84,16 @@ for i in range(len(lis2)):
 
 plt.plot(l, k, 'm*')
 
-np_x = np.array(lis)
-np_y = np.array(lis2)
+npx = np.array(lis)
+npy = np.array(lis2)
 
 x2 = list(range(743))
 
-th1_1, th0_1 = np.polyfit(np_x, np_y, 1)
-th2_2, th1_2, th0_2 = np.polyfit(np_x, np_y, 2)
-th3_3, th2_3, th1_3, th0_3 = np.polyfit(np_x, np_y, 3)
-th4_4, th3_4, th2_4, th1_4, th0_4 = np.polyfit(np_x, np_y, 4)
-th5_5, th4_5, th3_5, th2_5, th1_5, th0_5 = np.polyfit(np_x, np_y, 5)
+th1_1, th0_1 = np.polyfit(npx, npy, 1)
+th2_2, th1_2, th0_2 = np.polyfit(npx, npy, 2)
+th3_3, th2_3, th1_3, th0_3 = np.polyfit(npx, npy, 3)
+th4_4, th3_4, th2_4, th1_4, th0_4 = np.polyfit(npx, npy, 4)
+th5_5, th4_5, th3_5, th2_5, th1_5, th0_5 = np.polyfit(npx, npy, 5)
 
 f1 = lambda x: th1_1*x + th0_1
 f2 = lambda x: th2_2*x**2 + th1_2*x + th0_2
@@ -107,16 +107,16 @@ r3 = sq_error(lis, lis2, f3)
 r4 = sq_error(lis, lis2, f4)
 r5 = sq_error(lis, lis2, f5)
 
-f6 = np.poly1d(np.polyfit(np_x, np_y, 1)) #Удобный класс, используемый для инкапсуляции «естественных» операций над полиномами,
+f6 = np.poly1d(np.polyfit(npx, npy, 1)) #Удобный класс, используемый для инкапсуляции «естественных» операций над полиномами,
                                           #чтобы указанные операции могли принять свою обычную форму в коде.
 plt.plot(x2, f6(x2))
-f7 = np.poly1d(np.polyfit(np_x, np_y, 2))
+f7 = np.poly1d(np.polyfit(npx, npy, 2))
 plt.plot(x2, f7(x2))
-f8 = np.poly1d(np.polyfit(np_x, np_y, 3))
+f8 = np.poly1d(np.polyfit(npx, npy, 3))
 plt.plot(x2, f8(x2))
-f9 = np.poly1d(np.polyfit(np_x, np_y, 4))
+f9 = np.poly1d(np.polyfit(npx, npy, 4))
 plt.plot(x2, f9(x2))
-f10 = np.poly1d(np.polyfit(np_x, np_y, 5))
+f10 = np.poly1d(np.polyfit(npx, npy, 5))
 plt.plot(x2, f10(x2))
 
 plt.plot(l, k, 'y*')
