@@ -30,14 +30,14 @@ def vers2(n):
         print('Проверьте число')
 
 
-def fibonacci_generator(): 
+def generator(): 
     a, b = 0, 1
     while True:
         yield a
         a, b = b, a + b
 
 
-def fibonacci_iterator(n):
+def iterator(n):
     it = iter(list(range(2, n)))
     res = [0, 1, ]
     while True:
@@ -56,9 +56,9 @@ if __name__ == "__main__":
     
     print(f'vers2({n}): \n', vers2(n))
     
-    print(f'fibonacci_iterator({n}): \n', fibonacci_iterator(n))
-    f = fibonacci_generator()
+    print(f'iterator({n}): \n', iterator(n))
+    f = generator()
     result = []
     for x in range(n):
         result.append(f.__next__())
-    print('Итератор2: \n', result)
+    print('Итератор: \n', result)
