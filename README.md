@@ -1,5 +1,7 @@
 # Portfolio-python-6-semestr-
 
+Портфолио будет полностью готово к среде
+
 ##### №1 Лабораторная работа №1
 https://github.com/KsushaSeliv/Portfolio-python-6-semestr-/tree/master/Лабораторная%20работа%20№1
 
