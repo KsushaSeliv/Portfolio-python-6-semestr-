@@ -2,7 +2,7 @@
 #позволяющих взаимодействовать с JSON-файлом (создание, удаление, переименование, чтение, запись). 
 
 
-class GuestBook():
+class Kniga():
 
     def __init__(self):
         self.guests = list()
@@ -23,11 +23,11 @@ class GuestBook():
             file.write(json.dumps(json_data, indent=4))
             
 if __name__ == "__main__":
-    GuestBook = GuestBook()
-    GuestBook.add("Ksenia", "Selivanova", 20, "Russia")
-    GuestBook.add("Ktoto", "Esho", 25, "Russia")
+    kniga = kniga()
+    kniga.add("Ksenia", "Selivanova", 20, "Russia")
+    kniga.add("Ktoto", "Esho", 25, "Russia")
     
-    GuestBook.zapis()
+    kniga.zapis()
 
 
 # In[ ]:
