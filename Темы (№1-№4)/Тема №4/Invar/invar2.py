@@ -17,5 +17,5 @@ def Qr(content, module_color, background, file_format, scale):
     elif file_format == 'svg':
         qrcode.svg('qr.svg', module_color = module_color, background=background,scale=scale)
 
-result = input('Текстовая строка: ')
+result = input('Cтрока: ')
 Qr(result, (0,50,99), (2,5,6), file_format = 'png', scale = 8)
