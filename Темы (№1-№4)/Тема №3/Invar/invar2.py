@@ -12,7 +12,7 @@ def nerv(func):
       result = func(calc)
       t = datetime.datetime.now() - t
 
-      with open('Record.json', 'a') as f:
+      with open('zapis.json', 'a') as f:
             f.write("\n")
             f.write("_" * 20)
             f.write("\n")
