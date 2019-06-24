@@ -31,6 +31,8 @@ class Matric(threading.Thread): #мы хотим, чтобы класс рабо
             self.matr.append([])
             for i in range(3):
                 self.matr[1].append(sum(self.A[1]*self.B[:,i]))
+                
+                
         if self.potok is 2: #третий поток
             self.matr.append([])
             for i in range(3):
