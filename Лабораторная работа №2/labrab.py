@@ -1,12 +1,9 @@
-#Перемножение матриц с использованием потоков 
-
-
-import threading #Модуль threading значительно упрощает работу с потоками
+mport threading #Модуль threading значительно упрощает работу с потоками
                  #и позволяет программировать запуск нескольких операций одновременно.
 
 import numpy as np #поддержка больших многомерных массивов и матриц 
 
-class Matric(threading.Thread): #мы хотим, чтобы класс работал как поток. 
+class umnoz(threading.Thread): #мы хотим, чтобы класс работал как поток. 
                                 #Для этого мы подклассифицируем свой класс из класса Thread . 
                                 #Здесь Matric является дочерним классом класса Thread
     
@@ -18,34 +15,39 @@ class Matric(threading.Thread): #мы хотим, чтобы класс рабо
         self.A = A
         self.B = B
         self.matr = matr
-
+        
     def run(self): #код внутри метода run() для запуска потока
         if self.potok is 0: #первый поток
             self.matr.append([])
             for i in range(3):
-                self.matr[0].append(sum(self.A[0]*self.B[:,i])) #строка матрицы в виде списка * столбец матрицы в виде списка
-                                                               #они поэлементно перемножаются и полученный список суммируется
+                self.matr[0].append(sum(self.A[0]*self.B[:,i]))#строка матрицы в виде списка * столбец матрицы в виде списка
+                print(self.matr[0], sep='\n')                  #они поэлементно перемножаются и полученный список суммируется
                                                                #и получается одно число, которое мы записываем в 
-                                                               #определённую ячейку нулевой строки новой матрицы  
+                                                               #определённую ячейку нулевой строки новой матрицы
+
+
         if self.potok is 1: #второй поток
             self.matr.append([])
             for i in range(3):
                 self.matr[1].append(sum(self.A[1]*self.B[:,i]))
-                
-                
+                print(self.matr[1], sep='\n')                
+
+
         if self.potok is 2: #третий поток
             self.matr.append([])
             for i in range(3):
                 self.matr[2].append(sum(self.A[2]*self.B[:,i]))
+                print(self.matr[2], sep='\n')
+                
             c = np.array(self.matr)
             
             print(f'A:\n{A}\n',f'B:\n{B}\n',f'AB:\n{c}')
-
-
+            
 A = np.array([(2, 7, 2), (1, 5, 9), (4, 2, 5)]) #вводим первую матрицу
 B = np.array([(1, 2, 0), (3, 6, 2), (5, 8, 2)]) #вводит вторую матрицу
+
 matricaitog = [] #здесь результат перемножения
 
 for i in range(3):
-    thread = Matric(i, A, B, matricaitog)
+    thread = umnoz(i, A, B, itog)
     thread.start()
