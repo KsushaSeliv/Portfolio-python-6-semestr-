@@ -1,24 +1,39 @@
-#1.Разработать фрагмент программы, позволяющий получать данные о текущих курсах валют с сайта Центробанка РФ с использованием
+#Разработать фрагмент программы, позволяющий получать данные о текущих курсах валют с сайта Центробанка РФ с использованием
 #сервиса, который они предоставляют.Применить шаблон проектирования «Одиночка» для предотвращения отправки
 #избыточных запросов к серверу ЦБ РФ.
 
-from xml.etree import ElementTree as ET
 from urllib.request import urlopen
-import time
+from xml.etree import ElementTree as ET
 
-def dengi(lis=['R01235', 'R01239', 'R01820']):
-  
-    cursbank = urlopen("http://www.cbr.ru/scripts/XML_daily.asp")
-    spis = {}
-    xml = ET.parse(cursbank)
-    root = xml.getroot()
-    valutes = root.findall('Valute')
-    for el in valutes:
-        denid = el.get('ID')
-        if str(denid) in lis:
-            curden = el.find('Value').text
-            spis[denid] = curden
-    time.clock()
-    return spis
+class CurrencyBoard:
+   dictionary = None
 
-... в процессе
+   @staticmethod
+   def get():
+      if CurrencyBoard.dictionary is None:
+         CurrencyBoard()
+      return CurrencyBoard.dictionary
+
+   def __init__(self):
+      if not CurrencyBoard.dictionary:
+          currencies_ids_lst = ["R01235", "R01239", "R01820"]
+          result = {}
+          cur_res_xml = ET.parse(urlopen("http://www.cbr.ru/scripts/XML_daily.asp"))
+          root = cur_res_xml.getroot()
+          valutes = root.findall('Valute')
+          for el in valutes:
+              valute_id = el.get('ID')
+              if str(valute_id) in currencies_ids_lst:
+                  valute_cur_val = el.find('Value').text
+                  result[valute_id] = valute_cur_val
+          CurrencyBoard.dictionary = result
+      else:
+          print('Запрос уже был отправлен')
+
+s = CurrencyBoard.get()
+print (s)
+a = CurrencyBoard.get()
+print(a)
+
+assert id(a) == id(s)
+print(id(a), id(s))
